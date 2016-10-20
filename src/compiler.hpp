@@ -8,10 +8,10 @@
  */
 
 using result_t = unsigned;
-std::pair<bool,result_t> task1_grammar_lexer(const std::string&);
+std::pair<bool,result_t> task1_grammar_lexer(std::string&);
 
 namespace task1_grammar{
-    bool expression(const std::string& input, result_t& output);
-    bool term(const std::string& input, result_t& output);
-    bool factor(const std::string& input, result_t& output);
+    bool expression(std::string& input, result_t& output);
+    bool term(std::string& input, result_t& output);
+    bool factor(std::string& input, result_t& output);
 }
