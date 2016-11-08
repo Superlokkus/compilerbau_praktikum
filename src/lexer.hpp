@@ -1,22 +1,15 @@
+/*! @file lexer.hpp
+ *
+ */
+
+#ifndef COMPILERBAU_PRAKTIKUM_LEXER_HPP
+#define COMPILERBAU_PRAKTIKUM_LEXER_HPP
+
 
 #include <string>
 #include <utility>
 #include <fstream>
 #include <boost/variant.hpp>
-
-/*! @brief Simple arithmatic parsing
- *
- * @return If the expression was fully matched and if true the result
- */
-
-using result_t = unsigned;
-std::pair<bool,result_t> task1_grammar_lexer(std::string&);
-
-namespace task1_grammar{
-    bool expression(std::string& input, result_t& output);
-    bool term(std::string& input, result_t& output);
-    bool factor(std::string& input, result_t& output);
-}
 
 
 namespace PL0{
@@ -41,7 +34,9 @@ namespace PL0{
 
     class lexer{
     public:
-        lexer(std::fstream &file);
+        lexer(std::ifstream &file);
+
+        bool end() const;
         morphem lex();
         morphem operator()() {return lex();}
         morphem lexGetMorph() const;
@@ -49,3 +44,8 @@ namespace PL0{
 
     };
 }
+
+std::ostream& operator<< (std::ostream &os, const PL0::morphem& morphem);
+
+
+#endif //COMPILERBAU_PRAKTIKUM_LEXER_HPP

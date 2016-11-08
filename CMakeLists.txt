@@ -10,9 +10,9 @@ include_directories(${Boost_INCLUDE_DIR})
 include_directories("${PROJECT_BINARY_DIR}")
 
 set (CORE_SOURCE_FILES
-${PROJECT_SOURCE_DIR}/compiler.cpp
-${PROJECT_SOURCE_DIR}/compiler.hpp
-)
+        ${PROJECT_SOURCE_DIR}/lexer.cpp
+        ${PROJECT_SOURCE_DIR}/lexer.hpp
+        )
 
 add_executable(praktikum_cli ${PROJECT_SOURCE_DIR}/cli.cpp ${CORE_SOURCE_FILES})
 
