@@ -1,5 +1,6 @@
 PL/0 Grammar is
 
+```EBNF
 <Morphem>       ::= <Sonderzeichen>|<Zahl>|<Bezeichner>
 <Sonderzeichen> ::= + | - | * | / | , | . | ; | ( | ) | ? | ! | # | = | < | <= | > | >= | :=
 <Zahl>          ::= Zi {<Zi>}
@@ -7,3 +8,4 @@ PL/0 Grammar is
 <Bezeichner>    ::=Bu {BuZi}
 <BuZi>          ::= Bu | Zi
 <Bu>            ::= A | B | ... | Z | a | b | ... | z
+```
