@@ -47,5 +47,8 @@ namespace PL0{
 
 std::ostream& operator<< (std::ostream &os, const PL0::morphem& morphem);
 
+std::ostream &operator<<(std::ostream &os, const PL0::morphem_class &morphem_class);
+
+
 
 #endif //COMPILERBAU_PRAKTIKUM_LEXER_HPP
