@@ -10,14 +10,14 @@ include_directories(${Boost_INCLUDE_DIR})
 include_directories("${PROJECT_BINARY_DIR}")
 
 set (CORE_SOURCE_FILES
-${PROJECT_SOURCE_DIR}/compiler.cpp
-${PROJECT_SOURCE_DIR}/compiler.hpp
-)
+        ${PROJECT_SOURCE_DIR}/lexer.cpp
+        ${PROJECT_SOURCE_DIR}/lexer.hpp
+        )
 
 add_executable(praktikum_cli ${PROJECT_SOURCE_DIR}/cli.cpp ${CORE_SOURCE_FILES})
 
 set_property(TARGET praktikum_cli PROPERTY LINKER_LANGUAGE CXX)
-set_property(TARGET praktikum_cli PROPERTY CXX_STANDARD 11)
+set_property(TARGET praktikum_cli PROPERTY CXX_STANDARD 14)
 
 
 #enable_testing()
