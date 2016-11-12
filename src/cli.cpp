@@ -10,8 +10,8 @@ int main (int argc, char* argv[]){
         std::cerr << "Usage: " << argv[0] << " <file path>\n";
         return EXIT_FAILURE;
     }
-        std::ifstream file(argv[1]);
-        PL0::lexer lexer{file};
+
+        PL0::lexer lexer{std::ifstream(argv[1])};
 
         std::cout << "Lexing file " << argv[1] << "\n";
         for (PL0::morphem morphem; !lexer.end();){
