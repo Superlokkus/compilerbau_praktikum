@@ -7,7 +7,8 @@
 
 
 #include <string>
-#include <array>
+#include <unordered_set>
+#include <map>
 #include <utility>
 #include <fstream>
 #include <boost/variant.hpp>
@@ -16,11 +17,19 @@
 namespace PL0{
     using string = std::string;
     using number = int32_t;
+    using special_symbol_id = int;
 
+    const std::unordered_set<std::string> keywords = {"BEGIN", "CALL", "CONST", "DO", "END", "IF", "ODD", "PROCEDURE",
+                                                      "THEN", "VAR", "WHILE"};
+    const std::map<std::string, special_symbol_id> special_symbol_ids = {{":", 3},
+                                                                         {"=", 4},
+                                                                         {"<", 5},
+                                                                         {">", 6}};
 
     enum struct morphem_class{
         empty,
         symbol,
+        keyword,
         number,
         identifier,
         string,
