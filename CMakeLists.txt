@@ -14,6 +14,8 @@ set (CORE_SOURCE_FILES
         ${PROJECT_SOURCE_DIR}/lexer.hpp
         )
 
+configure_file(pl0_example.pl pl0_example.pl COPYONLY)
+
 add_executable(praktikum_cli ${PROJECT_SOURCE_DIR}/cli.cpp ${CORE_SOURCE_FILES})
 
 set_property(TARGET praktikum_cli PROPERTY LINKER_LANGUAGE CXX)
