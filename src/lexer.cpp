@@ -68,12 +68,13 @@ namespace PL0 {
 
 std::ostream &operator<<(std::ostream &os, const PL0::morphem &morphem) {
     os << "Morphem class: " << std::setw(10) << morphem.morphem_class
-       << " value: \"";
+       << " value: \"" << std::setw(15);
     {
         PL0::ostream_visitor os_visitor(os);
         boost::apply_visitor(os_visitor, morphem.value);
     }
     os << "\"";
+    os << " Position:" << morphem.position;
 
     return os;
 }
@@ -100,6 +101,11 @@ std::ostream &operator<<(std::ostream &os, const PL0::morphem_class &morphem_cla
             os << "symbol";
             break;
     }
+    return os;
+}
+
+std::ostream &operator<<(std::ostream &os, const PL0::position &position) {
+    os << "line: " << position.line_number << " column: " << position.position_in_line;
     return os;
 }
 

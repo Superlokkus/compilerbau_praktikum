@@ -82,5 +82,7 @@ std::ostream& operator<< (std::ostream &os, const PL0::morphem& morphem);
 
 std::ostream &operator<<(std::ostream &os, const PL0::morphem_class &morphem_class);
 
+std::ostream &operator<<(std::ostream &os, const PL0::position &position);
+
 
 #endif //COMPILERBAU_PRAKTIKUM_LEXER_HPP
