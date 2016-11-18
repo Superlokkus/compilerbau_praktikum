@@ -91,9 +91,6 @@ std::ostream &operator<<(std::ostream &os, const PL0::morphem_class &morphem_cla
         case morphem_class::keyword:
             os << "keyword";
             break;
-        case morphem_class::identifier:
-            os << "identifier";
-            break;
         case morphem_class::number:
             os << "number";
             break;

@@ -31,7 +31,6 @@ namespace PL0{
         symbol,
         keyword,
         number,
-        identifier,
         string,
     };
 
