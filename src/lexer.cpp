@@ -67,7 +67,7 @@ namespace PL0 {
 };
 
 std::ostream &operator<<(std::ostream &os, const PL0::morphem &morphem) {
-    os << "Morphem class: " << std::setw(10) << morphem.morphem_class
+    os << "Morphem class: " << std::left << std::setw(10) << morphem.morphem_class
        << " value: \"" << std::setw(15);
     {
         PL0::ostream_visitor os_visitor(os);
