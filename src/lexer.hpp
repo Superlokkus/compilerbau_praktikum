@@ -21,10 +21,25 @@ namespace PL0{
 
     const std::unordered_set<std::string> keywords = {"BEGIN", "CALL", "CONST", "DO", "END", "IF", "ODD", "PROCEDURE",
                                                       "THEN", "VAR", "WHILE"};
-    const std::map<std::string, special_symbol_id> special_symbol_ids = {{":", 3},
-                                                                         {"=", 4},
-                                                                         {"<", 5},
-                                                                         {">", 6}};
+    const std::map<std::string, special_symbol_id> special_symbol_ids = {{":",  3},
+                                                                         {"<",  4},
+                                                                         {">",  5},
+                                                                         {":=", 6},
+                                                                         {"<=", 7},
+                                                                         {">=", 8},
+                                                                         {"=",  9},
+                                                                         {",",  10},
+                                                                         {"+",  11},
+                                                                         {"-",  12},
+                                                                         {"*",  13},
+                                                                         {"/",  14},
+                                                                         {";",  15},
+                                                                         {".",  16},
+                                                                         {"(",  17},
+                                                                         {")",  18},
+                                                                         {"!",  19},
+                                                                         {"?",  20},
+                                                                         {"#",  21},};
 
     enum struct morphem_class{
         empty,
@@ -41,7 +56,7 @@ namespace PL0{
     };
 
     struct morphem{
-        boost::variant<string,number> value;
+        boost::variant<string, number, special_symbol_id> value;
         morphem_class morphem_class;
         position position;
 

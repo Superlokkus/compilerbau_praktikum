@@ -20,7 +20,7 @@ namespace PL0 {
         for (std::char_traits<char>::int_type c;
              (c = this->input_stream_.get()) != std::char_traits<char>::eof();) {
             ++position_in_file.position_in_line;
-            
+
             if (c == '\n') {
                 ++position_in_file.line_number;
                 position_in_file.position_in_line = 1;
@@ -36,16 +36,38 @@ namespace PL0 {
                 position_in_file.position_in_line = input_stream_.tellg() - pre - 1;
                 new_morphem.value = std::move(new_number);
                 break;
-            } else if (isalpha(c)) {
+            } else if (isalpha(c)) {  //First string char
                 if (new_morphem.morphem_class != morphem_class::string) {
                     new_morphem.morphem_class = morphem_class::string;
                     new_morphem.value = std::string{};
                 }
                 boost::get<std::string>(new_morphem.value) += static_cast<char>(c);
-            } else if (new_morphem.morphem_class == morphem_class::string) {
+            } else if (new_morphem.morphem_class == morphem_class::string) { //Remainder of string chars
                 break;
+            } else if (ispunct(c)) {
+                new_morphem.morphem_class = morphem_class::symbol;
+                //We are lucky, symbols can only be 2 chars long, so lets peek
+                std::string symbol{static_cast<char>(c)};
+                const auto next_char = this->input_stream_.peek();
+                if (next_char != std::char_traits<char>::eof() && ispunct(next_char)) {
+                    symbol += static_cast<char>(this->input_stream_.get());
+                }
+                auto symbol_id_it = special_symbol_ids.find(symbol);
+                if (symbol_id_it != special_symbol_ids.cend()) {
+                    new_morphem.value = symbol_id_it->second;
+                    break;
+                } else if (symbol.size() == 2) {
+                    symbol.pop_back();
+                    symbol_id_it = special_symbol_ids.find(symbol);
+                    if (symbol_id_it != special_symbol_ids.cend()) {
+                        new_morphem.value = symbol_id_it->second;
+                        break;
+                    }
+                }
+                throw std::runtime_error("Symbol not recognized");
             } else {
                 //fail
+                //TODO Insert failure code here
                 break;
             }
 
